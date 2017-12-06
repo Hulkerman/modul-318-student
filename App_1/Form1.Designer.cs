@@ -80,6 +80,7 @@
             this.cmb_start.Name = "cmb_start";
             this.cmb_start.Size = new System.Drawing.Size(200, 21);
             this.cmb_start.TabIndex = 1;
+            this.cmb_start.TextChanged += new System.EventHandler(this.cmb_start_TextChanged);
             this.cmb_start.Enter += new System.EventHandler(this.cmb_start_focus_enter);
             this.cmb_start.Leave += new System.EventHandler(this.cmb_start_focus_leave);
             // 
