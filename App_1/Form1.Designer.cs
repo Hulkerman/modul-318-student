@@ -175,6 +175,7 @@
             this.Controls.Add(this.grp_search);
             this.Name = "Form_Fahrplan";
             this.Text = "Fahrplan";
+            this.Load += new System.EventHandler(this.Form_Fahrplan_Load);
             this.grp_search.ResumeLayout(false);
             this.grp_search.PerformLayout();
             this.grp_result.ResumeLayout(false);

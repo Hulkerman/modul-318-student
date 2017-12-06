@@ -15,16 +15,16 @@ namespace App_1
         public Form_Fahrplan()
         {
             InitializeComponent();
-
-            cmb_start.Text = "Von...";
-            cmb_start.ForeColor = Color.Gray;
-            cmb_end.Text = "Nach...";
-            cmb_end.ForeColor = Color.Gray;
         }
         //----METHODS----
         private void set_dflt_cmb()
         {
-            if (!cmb_start.Focused)
+            if (cmb_start.Focused)
+            {
+                cmb_start.Text = "";
+                cmb_start.ForeColor = Color.Black;
+            }
+            else
             {
                 if (cmb_start.Text == "")
                 {
@@ -33,7 +33,12 @@ namespace App_1
                 }
             }
 
-            if (!cmb_end.Focused)
+            if (cmb_end.Focused)
+            {
+                cmb_end.Text = "";
+                cmb_end.ForeColor = Color.Black;
+            }
+            else
             {
                 if (cmb_end.Text == "")
                 {
@@ -45,6 +50,12 @@ namespace App_1
 
 
         //----EVENTS----
+
+        private void Form_Fahrplan_Load(object sender, EventArgs e)
+        {
+            set_dflt_cmb();
+        }
+
         private void btn_search_Click(object sender, EventArgs e)
         {
 
@@ -52,8 +63,7 @@ namespace App_1
 
         private void cmb_start_focus_enter(object sender, EventArgs e)
         {
-            cmb_start.Text = "";
-            cmb_start.ForeColor = Color.Black;
+            set_dflt_cmb();
         }
 
         private void cmb_start_focus_leave(object sender, EventArgs e)
@@ -63,8 +73,7 @@ namespace App_1
 
         private void cmb_end_focus_enter(object sender, EventArgs e)
         {
-            cmb_end.Text = "";
-            cmb_end.ForeColor = Color.Black;
+            set_dflt_cmb();
         }
 
         private void cmb_end_focus_leave(object sender, EventArgs e)
