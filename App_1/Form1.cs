@@ -20,7 +20,7 @@ namespace App_1
         }
 
         //----METHODS----
-        private void set_dflt_txt()
+        private void Set_DefaultTxt()
         {
             if (txt_start.Focused)
             {
@@ -51,9 +51,9 @@ namespace App_1
             }
         }
 
-        private void get_stations(string text, ListBox listBox)
+        private void Get_Stations(string text, ListBox listBox)
         {
-            if(text.Length >= 3 && text!= "Von..." && text != "Nach...")
+            if (text.Length >= 3 && text != "Von..." && text != "Nach...")
             {
                 listBox.Items.Clear();
                 Stations stations = transport.GetStations(text);
@@ -62,38 +62,77 @@ namespace App_1
                     listBox.Items.Add(station.Name);
                     listBox.Visible = true;
                     listBox.BringToFront();
-                }   
+                }
             }
+        }
+
+        private void Get_Grid()
+        {
+            DataTable dtt_connections = new DataTable();
+            dtt_connections.Columns.Add("Datum");
+            dtt_connections.Columns.Add("Zeit");
+            dtt_connections.Columns.Add("Von");
+            dtt_connections.Columns.Add("Nach");
+            dtt_connections.Columns.Add("Linie");
+            dtt_connections.Columns.Add("tbt2");
+
+            Connections connections = transport.GetConnections(txt_start.Text, txt_end.Text, dtp_date.Value.ToString("yyyy-MM-dd"), dtp_time.Text);
+
+            foreach (Connection station in connections.ConnectionList)
+            {
+                dtt_connections.Rows.Add(Get_Date(station.From.Departure), Get_Time(station.From.Departure), station.From.Station.Name, station.To.Station.Name);
+            }
+
+            dtg_connections.DataSource = dtt_connections;
+        }
+
+        private string Get_Date(string date1)
+        {
+            string date2 = date1.Remove(10);
+            DateTime date3 = Convert.ToDateTime(date2);
+
+            return date3.ToString("dd.MM.yyyy");
+        }
+
+        private string Get_Time(string time1)
+        {
+            string time2 = time1.Remove(0, 11);
+            time2 = time2.Remove(5);
+
+            return time2;
         }
 
         //----EVENTS----
 
         private void Form_Fahrplan_Load(object sender, EventArgs e)
         {
-            set_dflt_txt();
+            Set_DefaultTxt();
         }
 
         private void btn_search_Click(object sender, EventArgs e)
         {
-
+            try
+            {
+                Get_Grid();
+            }
+            catch
+            {
+                MessageBox.Show("Mindestens eine Station wurde nicht gefunden!");
+            }
         }
 
         private void txt_start_FocusEnter(object sender, EventArgs e)
         {
             if (!lbx_start.Visible)
             {
-                set_dflt_txt();
+                Set_DefaultTxt();
             }
         }
 
         private void txt_start_FocusLeave(object sender, EventArgs e)
         {
-            set_dflt_txt();
-            if (lbx_start.Focused)
-            {
-                //Do Nothing
-            }
-            else
+            Set_DefaultTxt();
+            if (!lbx_start.Focused)
             {
                 lbx_start.Visible = false;
             }
@@ -103,18 +142,14 @@ namespace App_1
         {
             if (!lbx_end.Visible)
             {
-                set_dflt_txt();
+                Set_DefaultTxt();
             }
         }
 
         private void txt_end_FocusLeave(object sender, EventArgs e)
         {
-            set_dflt_txt();
-            if (lbx_end.Focused)
-            {
-                //Do Nothing
-            }
-            else
+            Set_DefaultTxt();
+            if (!lbx_end.Focused)
             {
                 lbx_end.Visible = false;
             }
@@ -122,12 +157,12 @@ namespace App_1
 
         private void txt_start_TextChanged(object sender, EventArgs e)
         {
-            get_stations(txt_start.Text, lbx_start);
+            Get_Stations(txt_start.Text, lbx_start);
         }
 
         private void txt_end_TextChanged(object sender, EventArgs e)
         {
-            get_stations(txt_end.Text, lbx_end);
+            Get_Stations(txt_end.Text, lbx_end);
         }
 
         private void lbx_start_FocusLeave(object sender, EventArgs e)
@@ -143,16 +178,18 @@ namespace App_1
             {
                 lbx_end.Visible = false;
             }
-            
+
         }
         private void lbx_start_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             txt_start.Text = lbx_start.SelectedItem.ToString();
+            lbx_start.Visible = false;
         }
 
         private void lbx_end_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             txt_end.Text = lbx_end.SelectedItem.ToString();
+            lbx_end.Visible = false;
         }
     }
 }

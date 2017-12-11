@@ -29,30 +29,30 @@
         private void InitializeComponent()
         {
             this.grp_search = new System.Windows.Forms.GroupBox();
-            this.lbx_start = new System.Windows.Forms.ListBox();
-            this.lbx_end = new System.Windows.Forms.ListBox();
             this.txt_end = new System.Windows.Forms.TextBox();
             this.txt_start = new System.Windows.Forms.TextBox();
-            this.dateTimePicker_time = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePicker_date = new System.Windows.Forms.DateTimePicker();
+            this.dtp_time = new System.Windows.Forms.DateTimePicker();
+            this.dtp_date = new System.Windows.Forms.DateTimePicker();
             this.btn_search = new System.Windows.Forms.Button();
             this.lbl_start = new System.Windows.Forms.Label();
             this.lbl_end = new System.Windows.Forms.Label();
             this.lbl_date = new System.Windows.Forms.Label();
             this.lbl_time = new System.Windows.Forms.Label();
+            this.lbx_start = new System.Windows.Forms.ListBox();
+            this.lbx_end = new System.Windows.Forms.ListBox();
             this.grp_result = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dtg_connections = new System.Windows.Forms.DataGridView();
             this.grp_search.SuspendLayout();
             this.grp_result.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtg_connections)).BeginInit();
             this.SuspendLayout();
             // 
             // grp_search
             // 
             this.grp_search.Controls.Add(this.txt_end);
             this.grp_search.Controls.Add(this.txt_start);
-            this.grp_search.Controls.Add(this.dateTimePicker_time);
-            this.grp_search.Controls.Add(this.dateTimePicker_date);
+            this.grp_search.Controls.Add(this.dtp_time);
+            this.grp_search.Controls.Add(this.dtp_date);
             this.grp_search.Controls.Add(this.btn_search);
             this.grp_search.Controls.Add(this.lbl_start);
             this.grp_search.Controls.Add(this.lbl_end);
@@ -62,32 +62,10 @@
             this.grp_search.Controls.Add(this.lbx_end);
             this.grp_search.Location = new System.Drawing.Point(12, 12);
             this.grp_search.Name = "grp_search";
-            this.grp_search.Size = new System.Drawing.Size(442, 164);
+            this.grp_search.Size = new System.Drawing.Size(642, 164);
             this.grp_search.TabIndex = 0;
             this.grp_search.TabStop = false;
             this.grp_search.Text = "Suche";
-            // 
-            // lbx_start
-            // 
-            this.lbx_start.FormattingEnabled = true;
-            this.lbx_start.Location = new System.Drawing.Point(6, 59);
-            this.lbx_start.Name = "lbx_start";
-            this.lbx_start.Size = new System.Drawing.Size(200, 95);
-            this.lbx_start.TabIndex = 8;
-            this.lbx_start.Visible = false;
-            this.lbx_start.Leave += new System.EventHandler(this.lbx_start_FocusLeave);
-            this.lbx_start.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbx_start_MouseDoubleClick);
-            // 
-            // lbx_end
-            // 
-            this.lbx_end.FormattingEnabled = true;
-            this.lbx_end.Location = new System.Drawing.Point(236, 59);
-            this.lbx_end.Name = "lbx_end";
-            this.lbx_end.Size = new System.Drawing.Size(200, 95);
-            this.lbx_end.TabIndex = 8;
-            this.lbx_end.Visible = false;
-            this.lbx_end.Leave += new System.EventHandler(this.lbx_end_FocusLeave);
-            this.lbx_end.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbx_end_MouseDoubleClick);
             // 
             // txt_end
             // 
@@ -109,28 +87,28 @@
             this.txt_start.Enter += new System.EventHandler(this.txt_start_FocusEnter);
             this.txt_start.Leave += new System.EventHandler(this.txt_start_FocusLeave);
             // 
-            // dateTimePicker_time
+            // dtp_time
             // 
-            this.dateTimePicker_time.CustomFormat = "HH:mm";
-            this.dateTimePicker_time.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker_time.Location = new System.Drawing.Point(131, 92);
-            this.dateTimePicker_time.Name = "dateTimePicker_time";
-            this.dateTimePicker_time.ShowUpDown = true;
-            this.dateTimePicker_time.Size = new System.Drawing.Size(75, 20);
-            this.dateTimePicker_time.TabIndex = 4;
+            this.dtp_time.CustomFormat = "HH:mm";
+            this.dtp_time.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtp_time.Location = new System.Drawing.Point(131, 92);
+            this.dtp_time.Name = "dtp_time";
+            this.dtp_time.ShowUpDown = true;
+            this.dtp_time.Size = new System.Drawing.Size(75, 20);
+            this.dtp_time.TabIndex = 4;
             // 
-            // dateTimePicker_date
+            // dtp_date
             // 
-            this.dateTimePicker_date.CustomFormat = "dd.mm.yyyy";
-            this.dateTimePicker_date.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePicker_date.Location = new System.Drawing.Point(6, 92);
-            this.dateTimePicker_date.Name = "dateTimePicker_date";
-            this.dateTimePicker_date.Size = new System.Drawing.Size(119, 20);
-            this.dateTimePicker_date.TabIndex = 3;
+            this.dtp_date.CustomFormat = "dd.MM.yyyy";
+            this.dtp_date.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtp_date.Location = new System.Drawing.Point(6, 92);
+            this.dtp_date.Name = "dtp_date";
+            this.dtp_date.Size = new System.Drawing.Size(119, 20);
+            this.dtp_date.TabIndex = 3;
             // 
             // btn_search
             // 
-            this.btn_search.Location = new System.Drawing.Point(302, 135);
+            this.btn_search.Location = new System.Drawing.Point(502, 131);
             this.btn_search.Name = "btn_search";
             this.btn_search.Size = new System.Drawing.Size(134, 23);
             this.btn_search.TabIndex = 5;
@@ -174,29 +152,54 @@
             this.lbl_time.TabIndex = 0;
             this.lbl_time.Text = "Zeit";
             // 
+            // lbx_start
+            // 
+            this.lbx_start.FormattingEnabled = true;
+            this.lbx_start.Location = new System.Drawing.Point(6, 59);
+            this.lbx_start.Name = "lbx_start";
+            this.lbx_start.Size = new System.Drawing.Size(200, 95);
+            this.lbx_start.TabIndex = 8;
+            this.lbx_start.Visible = false;
+            this.lbx_start.Leave += new System.EventHandler(this.lbx_start_FocusLeave);
+            this.lbx_start.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbx_start_MouseDoubleClick);
+            // 
+            // lbx_end
+            // 
+            this.lbx_end.FormattingEnabled = true;
+            this.lbx_end.Location = new System.Drawing.Point(236, 59);
+            this.lbx_end.Name = "lbx_end";
+            this.lbx_end.Size = new System.Drawing.Size(200, 95);
+            this.lbx_end.TabIndex = 8;
+            this.lbx_end.Visible = false;
+            this.lbx_end.Leave += new System.EventHandler(this.lbx_end_FocusLeave);
+            this.lbx_end.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbx_end_MouseDoubleClick);
+            // 
             // grp_result
             // 
-            this.grp_result.Controls.Add(this.dataGridView1);
+            this.grp_result.Controls.Add(this.dtg_connections);
             this.grp_result.Location = new System.Drawing.Point(12, 182);
             this.grp_result.Name = "grp_result";
-            this.grp_result.Size = new System.Drawing.Size(442, 239);
+            this.grp_result.Size = new System.Drawing.Size(648, 204);
             this.grp_result.TabIndex = 0;
             this.grp_result.TabStop = false;
             this.grp_result.Text = "Resultat";
             // 
-            // dataGridView1
+            // dtg_connections
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 19);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(430, 214);
-            this.dataGridView1.TabIndex = 0;
+            this.dtg_connections.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dtg_connections.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtg_connections.Cursor = System.Windows.Forms.Cursors.No;
+            this.dtg_connections.Location = new System.Drawing.Point(6, 19);
+            this.dtg_connections.Name = "dtg_connections";
+            this.dtg_connections.RowHeadersVisible = false;
+            this.dtg_connections.Size = new System.Drawing.Size(636, 177);
+            this.dtg_connections.TabIndex = 0;
             // 
             // Form_Fahrplan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(466, 433);
+            this.ClientSize = new System.Drawing.Size(672, 398);
             this.Controls.Add(this.grp_result);
             this.Controls.Add(this.grp_search);
             this.Name = "Form_Fahrplan";
@@ -205,7 +208,7 @@
             this.grp_search.ResumeLayout(false);
             this.grp_search.PerformLayout();
             this.grp_result.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dtg_connections)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -213,15 +216,15 @@
         #endregion
 
         private System.Windows.Forms.GroupBox grp_search;
-        private System.Windows.Forms.DateTimePicker dateTimePicker_date;
+        private System.Windows.Forms.DateTimePicker dtp_date;
         private System.Windows.Forms.Button btn_search;
         private System.Windows.Forms.Label lbl_start;
         private System.Windows.Forms.Label lbl_end;
         private System.Windows.Forms.Label lbl_date;
         private System.Windows.Forms.Label lbl_time;
         private System.Windows.Forms.GroupBox grp_result;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DateTimePicker dateTimePicker_time;
+        private System.Windows.Forms.DataGridView dtg_connections;
+        private System.Windows.Forms.DateTimePicker dtp_time;
         private System.Windows.Forms.TextBox txt_start;
         private System.Windows.Forms.TextBox txt_end;
         private System.Windows.Forms.ListBox lbx_end;
