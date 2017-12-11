@@ -70,17 +70,16 @@ namespace App_1
         {
             DataTable dtt_connections = new DataTable();
             dtt_connections.Columns.Add("Datum");
-            dtt_connections.Columns.Add("Zeit");
+            dtt_connections.Columns.Add("Abfahrt");
             dtt_connections.Columns.Add("Von");
             dtt_connections.Columns.Add("Nach");
             dtt_connections.Columns.Add("Linie");
-            dtt_connections.Columns.Add("tbt2");
 
             Connections connections = transport.GetConnections(txt_start.Text, txt_end.Text, dtp_date.Value.ToString("yyyy-MM-dd"), dtp_time.Text);
 
-            foreach (Connection station in connections.ConnectionList)
+            foreach (Connection connection in connections.ConnectionList)
             {
-                dtt_connections.Rows.Add(Get_Date(station.From.Departure), Get_Time(station.From.Departure), station.From.Station.Name, station.To.Station.Name);
+                dtt_connections.Rows.Add(Get_Date(connection.From.Departure), Get_Time(connection.From.Departure), connection.From.Station.Name, connection.To.Station.Name);
             }
 
             dtg_connections.DataSource = dtt_connections;
