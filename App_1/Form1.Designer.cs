@@ -29,8 +29,10 @@
         private void InitializeComponent()
         {
             this.grp_search = new System.Windows.Forms.GroupBox();
-            this.cmb_end = new System.Windows.Forms.ComboBox();
-            this.cmb_start = new System.Windows.Forms.ComboBox();
+            this.lbx_start = new System.Windows.Forms.ListBox();
+            this.lbx_end = new System.Windows.Forms.ListBox();
+            this.txt_end = new System.Windows.Forms.TextBox();
+            this.txt_start = new System.Windows.Forms.TextBox();
             this.dateTimePicker_time = new System.Windows.Forms.DateTimePicker();
             this.dateTimePicker_date = new System.Windows.Forms.DateTimePicker();
             this.btn_search = new System.Windows.Forms.Button();
@@ -47,8 +49,8 @@
             // 
             // grp_search
             // 
-            this.grp_search.Controls.Add(this.cmb_end);
-            this.grp_search.Controls.Add(this.cmb_start);
+            this.grp_search.Controls.Add(this.txt_end);
+            this.grp_search.Controls.Add(this.txt_start);
             this.grp_search.Controls.Add(this.dateTimePicker_time);
             this.grp_search.Controls.Add(this.dateTimePicker_date);
             this.grp_search.Controls.Add(this.btn_search);
@@ -56,6 +58,8 @@
             this.grp_search.Controls.Add(this.lbl_end);
             this.grp_search.Controls.Add(this.lbl_date);
             this.grp_search.Controls.Add(this.lbl_time);
+            this.grp_search.Controls.Add(this.lbx_start);
+            this.grp_search.Controls.Add(this.lbx_end);
             this.grp_search.Location = new System.Drawing.Point(12, 12);
             this.grp_search.Name = "grp_search";
             this.grp_search.Size = new System.Drawing.Size(442, 164);
@@ -63,26 +67,47 @@
             this.grp_search.TabStop = false;
             this.grp_search.Text = "Suche";
             // 
-            // cmb_end
+            // lbx_start
             // 
-            this.cmb_end.FormattingEnabled = true;
-            this.cmb_end.Location = new System.Drawing.Point(236, 40);
-            this.cmb_end.Name = "cmb_end";
-            this.cmb_end.Size = new System.Drawing.Size(200, 21);
-            this.cmb_end.TabIndex = 2;
-            this.cmb_end.Enter += new System.EventHandler(this.cmb_end_focus_enter);
-            this.cmb_end.Leave += new System.EventHandler(this.cmb_end_focus_leave);
+            this.lbx_start.FormattingEnabled = true;
+            this.lbx_start.Location = new System.Drawing.Point(6, 59);
+            this.lbx_start.Name = "lbx_start";
+            this.lbx_start.Size = new System.Drawing.Size(200, 95);
+            this.lbx_start.TabIndex = 8;
+            this.lbx_start.Visible = false;
+            this.lbx_start.Leave += new System.EventHandler(this.lbx_start_FocusLeave);
+            this.lbx_start.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbx_start_MouseDoubleClick);
             // 
-            // cmb_start
+            // lbx_end
             // 
-            this.cmb_start.FormattingEnabled = true;
-            this.cmb_start.Location = new System.Drawing.Point(6, 40);
-            this.cmb_start.Name = "cmb_start";
-            this.cmb_start.Size = new System.Drawing.Size(200, 21);
-            this.cmb_start.TabIndex = 1;
-            this.cmb_start.TextChanged += new System.EventHandler(this.cmb_start_TextChanged);
-            this.cmb_start.Enter += new System.EventHandler(this.cmb_start_focus_enter);
-            this.cmb_start.Leave += new System.EventHandler(this.cmb_start_focus_leave);
+            this.lbx_end.FormattingEnabled = true;
+            this.lbx_end.Location = new System.Drawing.Point(236, 59);
+            this.lbx_end.Name = "lbx_end";
+            this.lbx_end.Size = new System.Drawing.Size(200, 95);
+            this.lbx_end.TabIndex = 8;
+            this.lbx_end.Visible = false;
+            this.lbx_end.Leave += new System.EventHandler(this.lbx_end_FocusLeave);
+            this.lbx_end.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbx_end_MouseDoubleClick);
+            // 
+            // txt_end
+            // 
+            this.txt_end.Location = new System.Drawing.Point(236, 40);
+            this.txt_end.Name = "txt_end";
+            this.txt_end.Size = new System.Drawing.Size(200, 20);
+            this.txt_end.TabIndex = 2;
+            this.txt_end.TextChanged += new System.EventHandler(this.txt_end_TextChanged);
+            this.txt_end.Enter += new System.EventHandler(this.txt_end_FocusEnter);
+            this.txt_end.Leave += new System.EventHandler(this.txt_end_FocusLeave);
+            // 
+            // txt_start
+            // 
+            this.txt_start.Location = new System.Drawing.Point(6, 40);
+            this.txt_start.Name = "txt_start";
+            this.txt_start.Size = new System.Drawing.Size(200, 20);
+            this.txt_start.TabIndex = 1;
+            this.txt_start.TextChanged += new System.EventHandler(this.txt_start_TextChanged);
+            this.txt_start.Enter += new System.EventHandler(this.txt_start_FocusEnter);
+            this.txt_start.Leave += new System.EventHandler(this.txt_start_FocusLeave);
             // 
             // dateTimePicker_time
             // 
@@ -197,8 +222,10 @@
         private System.Windows.Forms.GroupBox grp_result;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DateTimePicker dateTimePicker_time;
-        private System.Windows.Forms.ComboBox cmb_start;
-        private System.Windows.Forms.ComboBox cmb_end;
+        private System.Windows.Forms.TextBox txt_start;
+        private System.Windows.Forms.TextBox txt_end;
+        private System.Windows.Forms.ListBox lbx_end;
+        private System.Windows.Forms.ListBox lbx_start;
     }
 }
 
