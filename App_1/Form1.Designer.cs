@@ -30,12 +30,13 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form_Fahrplan));
             this.grp_search = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.txt_end = new System.Windows.Forms.TextBox();
             this.txt_start = new System.Windows.Forms.TextBox();
             this.dtp_time = new System.Windows.Forms.DateTimePicker();
             this.dtp_date = new System.Windows.Forms.DateTimePicker();
-            this.button1 = new System.Windows.Forms.Button();
             this.btn_search = new System.Windows.Forms.Button();
+            this.btn_view_gmaps = new System.Windows.Forms.Button();
             this.lbl_start = new System.Windows.Forms.Label();
             this.lbl_end = new System.Windows.Forms.Label();
             this.lbl_date = new System.Windows.Forms.Label();
@@ -43,6 +44,7 @@
             this.lbx_start = new System.Windows.Forms.ListBox();
             this.lbx_end = new System.Windows.Forms.ListBox();
             this.grp_result = new System.Windows.Forms.GroupBox();
+            this.lbl_loading = new System.Windows.Forms.Label();
             this.dtg_connections = new System.Windows.Forms.DataGridView();
             this.btn_navigation_1 = new System.Windows.Forms.Button();
             this.btn_navigation_2 = new System.Windows.Forms.Button();
@@ -63,8 +65,9 @@
             this.btn_3_search = new System.Windows.Forms.Button();
             this.txt_3_start = new System.Windows.Forms.TextBox();
             this.lbl_3_start = new System.Windows.Forms.Label();
-            this.btn_switch = new System.Windows.Forms.Button();
+            this.btn_exit = new System.Windows.Forms.Button();
             this.grp_search.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.grp_result.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtg_connections)).BeginInit();
             this.pnl_1.SuspendLayout();
@@ -78,13 +81,15 @@
             // 
             // grp_search
             // 
-            this.grp_search.Controls.Add(this.btn_switch);
+            this.grp_search.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grp_search.Controls.Add(this.pictureBox1);
             this.grp_search.Controls.Add(this.txt_end);
             this.grp_search.Controls.Add(this.txt_start);
             this.grp_search.Controls.Add(this.dtp_time);
             this.grp_search.Controls.Add(this.dtp_date);
-            this.grp_search.Controls.Add(this.button1);
             this.grp_search.Controls.Add(this.btn_search);
+            this.grp_search.Controls.Add(this.btn_view_gmaps);
             this.grp_search.Controls.Add(this.lbl_start);
             this.grp_search.Controls.Add(this.lbl_end);
             this.grp_search.Controls.Add(this.lbl_date);
@@ -98,9 +103,19 @@
             this.grp_search.TabStop = false;
             this.grp_search.Text = "Suche";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackgroundImage = global::App_1.Properties.Resources.minicons_73_5121;
+            this.pictureBox1.Location = new System.Drawing.Point(212, 35);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(32, 30);
+            this.pictureBox1.TabIndex = 11;
+            this.pictureBox1.TabStop = false;
+            this.pictureBox1.Click += new System.EventHandler(this.pic_switch_Click);
+            // 
             // txt_end
             // 
-            this.txt_end.Location = new System.Drawing.Point(254, 40);
+            this.txt_end.Location = new System.Drawing.Point(250, 40);
             this.txt_end.Name = "txt_end";
             this.txt_end.Size = new System.Drawing.Size(200, 20);
             this.txt_end.TabIndex = 5;
@@ -137,25 +152,27 @@
             this.dtp_date.Size = new System.Drawing.Size(119, 20);
             this.dtp_date.TabIndex = 7;
             // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(626, 135);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(134, 23);
-            this.button1.TabIndex = 9;
-            this.button1.Text = "Verbindung suchen";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.btn_search_Click);
-            // 
             // btn_search
             // 
-            this.btn_search.Location = new System.Drawing.Point(766, 135);
+            this.btn_search.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_search.Location = new System.Drawing.Point(626, 135);
             this.btn_search.Name = "btn_search";
-            this.btn_search.Size = new System.Drawing.Size(151, 23);
-            this.btn_search.TabIndex = 10;
-            this.btn_search.Text = "Auf Google Maps ansehen";
+            this.btn_search.Size = new System.Drawing.Size(134, 23);
+            this.btn_search.TabIndex = 9;
+            this.btn_search.Text = "Verbindung suchen";
             this.btn_search.UseVisualStyleBackColor = true;
-            this.btn_search.Click += new System.EventHandler(this.btn_view_gmaps_Click);
+            this.btn_search.Click += new System.EventHandler(this.btn_search_Click);
+            // 
+            // btn_view_gmaps
+            // 
+            this.btn_view_gmaps.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_view_gmaps.Location = new System.Drawing.Point(766, 135);
+            this.btn_view_gmaps.Name = "btn_view_gmaps";
+            this.btn_view_gmaps.Size = new System.Drawing.Size(151, 23);
+            this.btn_view_gmaps.TabIndex = 10;
+            this.btn_view_gmaps.Text = "Mit Google Maps ansehen";
+            this.btn_view_gmaps.UseVisualStyleBackColor = true;
+            this.btn_view_gmaps.Click += new System.EventHandler(this.btn_view_gmaps_Click);
             // 
             // lbl_start
             // 
@@ -169,7 +186,7 @@
             // lbl_end
             // 
             this.lbl_end.AutoSize = true;
-            this.lbl_end.Location = new System.Drawing.Point(254, 24);
+            this.lbl_end.Location = new System.Drawing.Point(250, 24);
             this.lbl_end.Name = "lbl_end";
             this.lbl_end.Size = new System.Drawing.Size(24, 13);
             this.lbl_end.TabIndex = 0;
@@ -207,7 +224,7 @@
             // lbx_end
             // 
             this.lbx_end.FormattingEnabled = true;
-            this.lbx_end.Location = new System.Drawing.Point(254, 59);
+            this.lbx_end.Location = new System.Drawing.Point(250, 59);
             this.lbx_end.Name = "lbx_end";
             this.lbx_end.Size = new System.Drawing.Size(200, 95);
             this.lbx_end.TabIndex = 0;
@@ -217,6 +234,9 @@
             // 
             // grp_result
             // 
+            this.grp_result.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grp_result.Controls.Add(this.lbl_loading);
             this.grp_result.Controls.Add(this.dtg_connections);
             this.grp_result.Location = new System.Drawing.Point(0, 170);
             this.grp_result.Name = "grp_result";
@@ -225,11 +245,28 @@
             this.grp_result.TabStop = false;
             this.grp_result.Text = "Resultat";
             // 
+            // lbl_loading
+            // 
+            this.lbl_loading.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_loading.AutoSize = true;
+            this.lbl_loading.BackColor = System.Drawing.SystemColors.Window;
+            this.lbl_loading.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_loading.Location = new System.Drawing.Point(420, 242);
+            this.lbl_loading.Name = "lbl_loading";
+            this.lbl_loading.Size = new System.Drawing.Size(58, 25);
+            this.lbl_loading.TabIndex = 1;
+            this.lbl_loading.Text = "lädt...";
+            // 
             // dtg_connections
             // 
             this.dtg_connections.AllowUserToAddRows = false;
             this.dtg_connections.AllowUserToDeleteRows = false;
             this.dtg_connections.AllowUserToResizeRows = false;
+            this.dtg_connections.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dtg_connections.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dtg_connections.BackgroundColor = System.Drawing.SystemColors.Window;
             this.dtg_connections.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
@@ -260,7 +297,7 @@
             this.btn_navigation_2.Name = "btn_navigation_2";
             this.btn_navigation_2.Size = new System.Drawing.Size(125, 35);
             this.btn_navigation_2.TabIndex = 2;
-            this.btn_navigation_2.Text = "Fahrplan";
+            this.btn_navigation_2.Text = "Fahrplan-Tafel";
             this.btn_navigation_2.UseVisualStyleBackColor = true;
             this.btn_navigation_2.Click += new System.EventHandler(this.btn_navigation_2_Click);
             // 
@@ -438,34 +475,39 @@
             this.lbl_3_start.TabIndex = 2;
             this.lbl_3_start.Text = "Station";
             // 
-            // btn_switch
+            // btn_exit
             // 
-            this.btn_switch.BackgroundImage = global::App_1.Properties.Resources.minicons_73_5121;
-            this.btn_switch.Location = new System.Drawing.Point(212, 40);
-            this.btn_switch.Name = "btn_switch";
-            this.btn_switch.Size = new System.Drawing.Size(36, 32);
-            this.btn_switch.TabIndex = 6;
-            this.btn_switch.UseVisualStyleBackColor = true;
-            this.btn_switch.Click += new System.EventHandler(this.btn_switch_Click);
+            this.btn_exit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_exit.Location = new System.Drawing.Point(813, 12);
+            this.btn_exit.Margin = new System.Windows.Forms.Padding(0, 3, 0, 3);
+            this.btn_exit.Name = "btn_exit";
+            this.btn_exit.Size = new System.Drawing.Size(125, 35);
+            this.btn_exit.TabIndex = 3;
+            this.btn_exit.Text = "Verlassen";
+            this.btn_exit.UseVisualStyleBackColor = true;
+            this.btn_exit.Click += new System.EventHandler(this.btn_exit_Click);
             // 
             // Form_Fahrplan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(947, 707);
+            this.Controls.Add(this.btn_exit);
             this.Controls.Add(this.btn_navigation_3);
             this.Controls.Add(this.btn_navigation_2);
             this.Controls.Add(this.btn_navigation_1);
+            this.Controls.Add(this.pnl_1);
             this.Controls.Add(this.pnl_3);
             this.Controls.Add(this.pnl_2);
-            this.Controls.Add(this.pnl_1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form_Fahrplan";
             this.Text = "Fahrplan";
             this.Load += new System.EventHandler(this.Form_Fahrplan_Load);
             this.grp_search.ResumeLayout(false);
             this.grp_search.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.grp_result.ResumeLayout(false);
+            this.grp_result.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtg_connections)).EndInit();
             this.pnl_1.ResumeLayout(false);
             this.pnl_2.ResumeLayout(false);
@@ -484,7 +526,7 @@
 
         private System.Windows.Forms.GroupBox grp_search;
         private System.Windows.Forms.DateTimePicker dtp_date;
-        private System.Windows.Forms.Button btn_search;
+        private System.Windows.Forms.Button btn_view_gmaps;
         private System.Windows.Forms.Label lbl_start;
         private System.Windows.Forms.Label lbl_end;
         private System.Windows.Forms.Label lbl_date;
@@ -515,8 +557,10 @@
         private System.Windows.Forms.TextBox txt_3_start;
         private System.Windows.Forms.Label lbl_3_start;
         private System.Windows.Forms.WebBrowser web_gmaps;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button btn_switch;
+        private System.Windows.Forms.Button btn_search;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label lbl_loading;
+        private System.Windows.Forms.Button btn_exit;
     }
 }
 

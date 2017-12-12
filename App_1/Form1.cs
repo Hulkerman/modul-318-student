@@ -55,6 +55,8 @@ namespace App_1
 
         private void Get_Grid()
         {
+            Cursor.Current = Cursors.WaitCursor;
+            lbl_loading.Visible = true;
             DataTable dtt_connections = new DataTable();
             dtt_connections.Columns.Add("Datum");
             dtt_connections.Columns.Add("Von");
@@ -71,7 +73,8 @@ namespace App_1
             }
 
             dtg_connections.DataSource = dtt_connections;
-
+            lbl_loading.Visible = false;
+            UseWaitCursor = false;
         }
 
         private void Get_2_Grid()
@@ -175,6 +178,7 @@ namespace App_1
             pnl_1.Visible = true;
             pnl_2.Visible = false;
             pnl_3.Visible = false;
+            lbl_loading.Visible = false;
             Set_DefaultBtn();
             Set_DefaultTxt(txt_start);
             Set_DefaultTxt(txt_end);
@@ -206,11 +210,25 @@ namespace App_1
             Set_DefaultBtn();
         }
 
+        private void btn_exit_Click(object sender, EventArgs e)
+        {
+            Form_confirm_exit exit = new Form_confirm_exit();
+            exit.Visible = false;
+            if(exit.ShowDialog(this) == DialogResult.OK)
+            {
+                Close();
+            }
+            else
+            {
+                exit.Dispose();
+            }
+        }
+
         //----------------------------------------------------------------------------------------------------
         //----Menu_1------
         //----------------------------------------------------------------------------------------------------
 
-        private void btn_switch_Click(object sender, EventArgs e)
+        private void pic_switch_Click(object sender, EventArgs e)
         {
             Switch_txt(txt_start, txt_end);
             lbx_start.Visible = false;
@@ -299,6 +317,7 @@ namespace App_1
 
         private void lbx_start_FocusLeave(object sender, EventArgs e)
         {
+            Set_DefaultTxt(txt_start);
             if (!txt_start.Focused)
             {
                 lbx_start.Visible = false;
@@ -306,6 +325,7 @@ namespace App_1
         }
         private void lbx_end_FocusLeave(object sender, EventArgs e)
         {
+            Set_DefaultTxt(txt_end);
             if (!txt_end.Focused)
             {
                 lbx_end.Visible = false;
@@ -315,12 +335,14 @@ namespace App_1
         private void lbx_start_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             txt_start.Text = lbx_start.SelectedItem.ToString();
+            btn_search.Focus();
             lbx_start.Visible = false;
         }
 
         private void lbx_end_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             txt_end.Text = lbx_end.SelectedItem.ToString();
+            btn_search.Focus();
             lbx_end.Visible = false;
         }
 
@@ -374,6 +396,7 @@ namespace App_1
         private void lbx_2_start_DoubleClick(object sender, EventArgs e)
         {
             txt_2_start.Text = lbx_2_start.SelectedItem.ToString();
+            btn_2_search.Focus();
             lbx_2_start.Visible = false;
         }
 
@@ -414,6 +437,7 @@ namespace App_1
         private void lbx_3_start_DoubleClick(object sender, EventArgs e)
         {
             txt_3_start.Text = lbx_3_1_start.SelectedItem.ToString();
+            btn_3_search.Focus();
             lbx_3_1_start.Visible = false;
         }
 
