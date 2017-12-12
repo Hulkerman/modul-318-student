@@ -57,30 +57,27 @@ namespace App_1
         {
             DataTable dtt_connections = new DataTable();
             dtt_connections.Columns.Add("Datum");
-            dtt_connections.Columns.Add("Abfahrt");
             dtt_connections.Columns.Add("Von");
+            dtt_connections.Columns.Add("Abfahrt");
             dtt_connections.Columns.Add("Nach");
-            dtt_connections.Columns.Add("Linie");
+            dtt_connections.Columns.Add("Ankunft");
+            dtt_connections.Columns.Add("Gleis/Platform");
 
             Connections connections = transport.GetConnections(txt_start.Text, txt_end.Text, dtp_date.Value.ToString("yyyy-MM-dd"), dtp_time.Text);
 
             foreach (Connection connection in connections.ConnectionList)
             {
-                Station station = transport.GetStations(txt_start.Text).StationList.First();
-                StationBoardRoot departures = transport.GetStationBoard(station.Name, station.Id);
-                foreach (StationBoard station_ in departures.Entries)
-                {
-                    dtt_connections.Rows.Add(Get_Date(connection.From.Departure), Get_Time(connection.From.Departure), connection.From.Station.Name, connection.To.Station.Name, (station_.Category + " " + station_.Number));
-                }
-
+                dtt_connections.Rows.Add(Get_Date(connection.From.Departure), connection.From.Station.Name, Get_Time(connection.From.Departure), connection.To.Station.Name, Get_Time(connection.To.Arrival), connection.To.Platform);
             }
-            
+
             dtg_connections.DataSource = dtt_connections;
+
         }
 
         private void Get_2_Grid()
         {
             DataTable dtt_routes = new DataTable();
+            dtt_routes.Columns.Add("Zeit");
             dtt_routes.Columns.Add("Nach");
             dtt_routes.Columns.Add("Linie");
 
@@ -89,7 +86,7 @@ namespace App_1
 
             foreach (StationBoard station_b in departures.Entries)
             {
-                dtt_routes.Rows.Add(station_b.To, (station_b.Category + " " + station_b.Number));
+                dtt_routes.Rows.Add(Get_Time(station_b.Stop.Departure.ToString()), station_b.To, (station_b.Category + " " + station_b.Number));
             }
 
             dtg_2_routes.DataSource = dtt_routes;
@@ -151,7 +148,7 @@ namespace App_1
 
         private void Create_GmapConnection(string x1, string y1, string x2, string y2)
         {
-            string url = "https://www.google.ch/maps/dir/"+ x1 + ", " + y1 + "/" + x2 + "," + y2;
+            string url = "https://www.google.ch/maps/dir/" + x1 + ", " + y1 + "/" + x2 + "," + y2;
             web_gmaps.Navigate(url);
         }
 
@@ -159,6 +156,13 @@ namespace App_1
         {
             string url = "https://www.google.ch/maps/place/" + x + "," + y;
             web_gmaps.Navigate(url);
+        }
+
+        private void Switch_txt(TextBox textBox1, TextBox textBox2)
+        {
+            string temp = textBox1.Text;
+            textBox1.Text = textBox2.Text;
+            textBox2.Text = temp;
         }
 
         //----------------------------------------------------------------------------------------------------
@@ -206,9 +210,15 @@ namespace App_1
         //----Menu_1------
         //----------------------------------------------------------------------------------------------------
 
+        private void btn_switch_Click(object sender, EventArgs e)
+        {
+            Switch_txt(txt_start, txt_end);
+            lbx_start.Visible = false;
+            lbx_end.Visible = false;
+        }
         private void btn_search_Click(object sender, EventArgs e)
         {
-            if(txt_start.Text != string.Empty && txt_start.Text != "Station...")
+            if (txt_start.Text != string.Empty && txt_start.Text != "Station...")
             {
                 Get_Grid();
             }
@@ -373,7 +383,7 @@ namespace App_1
 
         private void btn_3_search_Click(object sender, EventArgs e)
         {
-            if(txt_3_start.Text != string.Empty && txt_3_start.Text != "Station...")
+            if (txt_3_start.Text != string.Empty && txt_3_start.Text != "Station...")
             {
                 Stations stations = transport.GetStations(txt_3_start.Text);
 

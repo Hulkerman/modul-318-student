@@ -63,6 +63,7 @@
             this.btn_3_search = new System.Windows.Forms.Button();
             this.txt_3_start = new System.Windows.Forms.TextBox();
             this.lbl_3_start = new System.Windows.Forms.Label();
+            this.btn_switch = new System.Windows.Forms.Button();
             this.grp_search.SuspendLayout();
             this.grp_result.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dtg_connections)).BeginInit();
@@ -77,6 +78,7 @@
             // 
             // grp_search
             // 
+            this.grp_search.Controls.Add(this.btn_switch);
             this.grp_search.Controls.Add(this.txt_end);
             this.grp_search.Controls.Add(this.txt_start);
             this.grp_search.Controls.Add(this.dtp_time);
@@ -98,10 +100,10 @@
             // 
             // txt_end
             // 
-            this.txt_end.Location = new System.Drawing.Point(236, 40);
+            this.txt_end.Location = new System.Drawing.Point(254, 40);
             this.txt_end.Name = "txt_end";
             this.txt_end.Size = new System.Drawing.Size(200, 20);
-            this.txt_end.TabIndex = 2;
+            this.txt_end.TabIndex = 5;
             this.txt_end.TextChanged += new System.EventHandler(this.txt_end_TextChanged);
             this.txt_end.Enter += new System.EventHandler(this.txt_end_FocusEnter);
             this.txt_end.Leave += new System.EventHandler(this.txt_end_FocusLeave);
@@ -111,7 +113,7 @@
             this.txt_start.Location = new System.Drawing.Point(6, 40);
             this.txt_start.Name = "txt_start";
             this.txt_start.Size = new System.Drawing.Size(200, 20);
-            this.txt_start.TabIndex = 1;
+            this.txt_start.TabIndex = 4;
             this.txt_start.TextChanged += new System.EventHandler(this.txt_start_TextChanged);
             this.txt_start.Enter += new System.EventHandler(this.txt_start_FocusEnter);
             this.txt_start.Leave += new System.EventHandler(this.txt_start_FocusLeave);
@@ -124,7 +126,7 @@
             this.dtp_time.Name = "dtp_time";
             this.dtp_time.ShowUpDown = true;
             this.dtp_time.Size = new System.Drawing.Size(75, 20);
-            this.dtp_time.TabIndex = 4;
+            this.dtp_time.TabIndex = 8;
             // 
             // dtp_date
             // 
@@ -133,14 +135,14 @@
             this.dtp_date.Location = new System.Drawing.Point(6, 92);
             this.dtp_date.Name = "dtp_date";
             this.dtp_date.Size = new System.Drawing.Size(119, 20);
-            this.dtp_date.TabIndex = 3;
+            this.dtp_date.TabIndex = 7;
             // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(626, 135);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(134, 23);
-            this.button1.TabIndex = 5;
+            this.button1.TabIndex = 9;
             this.button1.Text = "Verbindung suchen";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.btn_search_Click);
@@ -150,7 +152,7 @@
             this.btn_search.Location = new System.Drawing.Point(766, 135);
             this.btn_search.Name = "btn_search";
             this.btn_search.Size = new System.Drawing.Size(151, 23);
-            this.btn_search.TabIndex = 5;
+            this.btn_search.TabIndex = 10;
             this.btn_search.Text = "Auf Google Maps ansehen";
             this.btn_search.UseVisualStyleBackColor = true;
             this.btn_search.Click += new System.EventHandler(this.btn_view_gmaps_Click);
@@ -167,7 +169,7 @@
             // lbl_end
             // 
             this.lbl_end.AutoSize = true;
-            this.lbl_end.Location = new System.Drawing.Point(236, 24);
+            this.lbl_end.Location = new System.Drawing.Point(254, 24);
             this.lbl_end.Name = "lbl_end";
             this.lbl_end.Size = new System.Drawing.Size(24, 13);
             this.lbl_end.TabIndex = 0;
@@ -197,7 +199,7 @@
             this.lbx_start.Location = new System.Drawing.Point(6, 59);
             this.lbx_start.Name = "lbx_start";
             this.lbx_start.Size = new System.Drawing.Size(200, 95);
-            this.lbx_start.TabIndex = 8;
+            this.lbx_start.TabIndex = 0;
             this.lbx_start.Visible = false;
             this.lbx_start.Leave += new System.EventHandler(this.lbx_start_FocusLeave);
             this.lbx_start.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbx_start_MouseDoubleClick);
@@ -205,10 +207,10 @@
             // lbx_end
             // 
             this.lbx_end.FormattingEnabled = true;
-            this.lbx_end.Location = new System.Drawing.Point(236, 59);
+            this.lbx_end.Location = new System.Drawing.Point(254, 59);
             this.lbx_end.Name = "lbx_end";
             this.lbx_end.Size = new System.Drawing.Size(200, 95);
-            this.lbx_end.TabIndex = 8;
+            this.lbx_end.TabIndex = 0;
             this.lbx_end.Visible = false;
             this.lbx_end.Leave += new System.EventHandler(this.lbx_end_FocusLeave);
             this.lbx_end.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbx_end_MouseDoubleClick);
@@ -320,7 +322,7 @@
             this.lbx_2_start.Location = new System.Drawing.Point(6, 59);
             this.lbx_2_start.Name = "lbx_2_start";
             this.lbx_2_start.Size = new System.Drawing.Size(200, 95);
-            this.lbx_2_start.TabIndex = 9;
+            this.lbx_2_start.TabIndex = 0;
             this.lbx_2_start.Visible = false;
             this.lbx_2_start.DoubleClick += new System.EventHandler(this.lbx_2_start_DoubleClick);
             this.lbx_2_start.Leave += new System.EventHandler(this.lbx_2_start_FoucsLeave);
@@ -330,7 +332,7 @@
             this.btn_2_search.Location = new System.Drawing.Point(783, 135);
             this.btn_2_search.Name = "btn_2_search";
             this.btn_2_search.Size = new System.Drawing.Size(134, 23);
-            this.btn_2_search.TabIndex = 6;
+            this.btn_2_search.TabIndex = 12;
             this.btn_2_search.Text = "Routen suchen";
             this.btn_2_search.UseVisualStyleBackColor = true;
             this.btn_2_search.Click += new System.EventHandler(this.btn_2_search_Click);
@@ -340,7 +342,7 @@
             this.txt_2_start.Location = new System.Drawing.Point(6, 40);
             this.txt_2_start.Name = "txt_2_start";
             this.txt_2_start.Size = new System.Drawing.Size(200, 20);
-            this.txt_2_start.TabIndex = 1;
+            this.txt_2_start.TabIndex = 11;
             this.txt_2_start.TextChanged += new System.EventHandler(this.txt_2_start_TextChanged);
             this.txt_2_start.Enter += new System.EventHandler(this.txt_2_start_FocusEnter);
             this.txt_2_start.Leave += new System.EventHandler(this.txt_2_start_FocusLeave);
@@ -412,7 +414,7 @@
             this.btn_3_search.Location = new System.Drawing.Point(783, 135);
             this.btn_3_search.Name = "btn_3_search";
             this.btn_3_search.Size = new System.Drawing.Size(134, 23);
-            this.btn_3_search.TabIndex = 6;
+            this.btn_3_search.TabIndex = 14;
             this.btn_3_search.Text = "Station anzeigen";
             this.btn_3_search.UseVisualStyleBackColor = true;
             this.btn_3_search.Click += new System.EventHandler(this.btn_3_search_Click);
@@ -422,7 +424,7 @@
             this.txt_3_start.Location = new System.Drawing.Point(6, 40);
             this.txt_3_start.Name = "txt_3_start";
             this.txt_3_start.Size = new System.Drawing.Size(200, 20);
-            this.txt_3_start.TabIndex = 1;
+            this.txt_3_start.TabIndex = 13;
             this.txt_3_start.TextChanged += new System.EventHandler(this.txt_3_start_TextChanged);
             this.txt_3_start.Enter += new System.EventHandler(this.txt_3_start_FocusEnter);
             this.txt_3_start.Leave += new System.EventHandler(this.txt_3_start_FocusLeave);
@@ -436,6 +438,16 @@
             this.lbl_3_start.TabIndex = 2;
             this.lbl_3_start.Text = "Station";
             // 
+            // btn_switch
+            // 
+            this.btn_switch.BackgroundImage = global::App_1.Properties.Resources.minicons_73_5121;
+            this.btn_switch.Location = new System.Drawing.Point(212, 40);
+            this.btn_switch.Name = "btn_switch";
+            this.btn_switch.Size = new System.Drawing.Size(36, 32);
+            this.btn_switch.TabIndex = 6;
+            this.btn_switch.UseVisualStyleBackColor = true;
+            this.btn_switch.Click += new System.EventHandler(this.btn_switch_Click);
+            // 
             // Form_Fahrplan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -444,9 +456,9 @@
             this.Controls.Add(this.btn_navigation_3);
             this.Controls.Add(this.btn_navigation_2);
             this.Controls.Add(this.btn_navigation_1);
-            this.Controls.Add(this.pnl_1);
             this.Controls.Add(this.pnl_3);
             this.Controls.Add(this.pnl_2);
+            this.Controls.Add(this.pnl_1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form_Fahrplan";
             this.Text = "Fahrplan";
@@ -504,6 +516,7 @@
         private System.Windows.Forms.Label lbl_3_start;
         private System.Windows.Forms.WebBrowser web_gmaps;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_switch;
     }
 }
 
